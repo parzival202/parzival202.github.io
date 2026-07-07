@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT Asset Manager | parzival202</title>
+  <meta name="description" content="Page projet IT Asset Manager : application Next.js de gestion de parc informatique, maintenances, interventions, alertes et dashboard." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="site-header" data-header>
+    <a class="brand" href="../index.html#accueil">parzival202</a>
+    <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button>
+    <nav class="site-nav" data-nav aria-label="Navigation principale">
+      <a href="../index.html#accueil">Accueil</a><a href="../index.html#apropos">A propos</a><a href="../index.html#experience">Experience</a><a href="../index.html#projets">Projets</a><a href="../index.html#formation">Formation</a><a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="section project-hero">
+      <a class="back-link" href="../index.html#projets">← Retour aux projets</a>
+      <div class="project-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Application metier / gestion de parc</p>
+          <h1>IT Asset Manager / ITAM</h1>
+          <p class="project-summary">Application web personnalisee pour centraliser l'inventaire informatique, suivre les maintenances, documenter les interventions et visualiser l'etat du parc.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="https://github.com/parzival202/It-asset-manager-ITAM-" target="_blank" rel="noopener">Voir le depot GitHub</a></div>
+        </div>
+        <aside class="project-meta reveal">
+          <dl>
+            <div><dt>Stack</dt><dd>Next.js, React, JavaScript/TypeScript, CSS, API routes, scripts PowerShell</dd></div>
+            <div><dt>Metier</dt><dd>Inventaire, maintenances, interventions, utilisateurs, alertes, statistiques</dd></div>
+            <div><dt>Contexte</dt><dd>Outil adapte a un besoin de suivi de parc dans un environnement d'entreprise</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="detail-grid">
+        <article class="detail-panel reveal"><h2>Probleme resolu</h2><p>Un parc informatique devient difficile a suivre quand les machines, les utilisateurs, les garanties, les maintenances et les interventions restent disperses entre fichiers, messages et memoire terrain.</p></article>
+        <article class="detail-panel reveal"><h2>Solution</h2><p>L'application propose un socle ITAM dedie : fiches equipements, statuts, sites/services, utilisateurs assignes, historique d'interventions, agenda de maintenance et tableaux de bord.</p></article>
+        <article class="detail-panel reveal"><h2>Fonctionnalites deduites du code</h2><ul><li>Inventaire machines avec tag, type, statut, marque, modele, serie, OS, RAM et stockage.</li><li>Association a un site, service, utilisateur et poste.</li><li>Suivi achat, fournisseur, garantie, fin de vie et intervalle de maintenance.</li><li>Maintenances preventives, correctives, remplacements et deploiements.</li><li>Interventions avec date, duree, technicien, statut et details.</li><li>Dashboard avec repartition parc, maintenances, interventions et ratio preventif/correctif.</li></ul></article>
+        <article class="detail-panel reveal"><h2>Workflow</h2><ol class="workflow"><li>Ajouter ou consulter une machine.</li><li>Suivre son statut, son affectation et ses garanties.</li><li>Planifier une maintenance ou documenter une intervention.</li><li>Centraliser les informations du parc et surveiller les alertes.</li></ol></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading reveal"><p class="eyebrow">Captures</p><h2>Ecrans principaux</h2></div>
+      <div class="media-grid">
+        <figure class="media-card reveal"><img src="../assets/img/projects/it-asset-manager/01_dasshboard_1.png" alt="Dashboard ITAM" /><figcaption>Dashboard parc informatique.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/it-asset-manager/03_onglet_equipement.png" alt="Liste des equipements ITAM" /><figcaption>Inventaire des equipements.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/it-asset-manager/04_formulaire_ajout_equipement.png" alt="Formulaire ajout equipement ITAM" /><figcaption>Ajout d'equipement.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/it-asset-manager/06_onglet_maintenance_liste.png" alt="Liste des maintenances ITAM" /><figcaption>Liste des maintenances.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/it-asset-manager/07_onglet_maintenance_calendrier.png" alt="Calendrier maintenance ITAM" /><figcaption>Agenda planning.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/it-asset-manager/11_Alertes.png" alt="Alertes ITAM" /><figcaption>Alertes operationnelles.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="detail-grid">
+        <article class="detail-panel reveal"><h2>Resultats</h2><p>Le projet montre la capacite a partir d'un besoin metier reel et a produire une interface operationnelle, orientee exploitation, avec donnees structurees et indicateurs utiles.</p></article>
+        <article class="detail-panel reveal"><h2>Limites et suites</h2><p>Les suites logiques : durcir l'authentification, stabiliser les tests, documenter le modele de donnees, ameliorer les exports et fiabiliser le deploiement.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><span>© 2026 Akrou Franck Olivier</span><span>IT Asset Manager</span></footer>
+  <script src="../script.js"></script>
+</body>
+</html>

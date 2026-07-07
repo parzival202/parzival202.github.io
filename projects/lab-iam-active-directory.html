@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab IAM / Active Directory | parzival202</title>
+  <meta name="description" content="Lab IAM Active Directory avec OU, utilisateurs, groupes, GPO, delegation DHCP/DNS, controle d'acces IIS et audit." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="site-header" data-header><a class="brand" href="../index.html#accueil">parzival202</a><button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button><nav class="site-nav" data-nav aria-label="Navigation principale"><a href="../index.html#accueil">Accueil</a><a href="../index.html#apropos">A propos</a><a href="../index.html#experience">Experience</a><a href="../index.html#projets">Projets</a><a href="../index.html#formation">Formation</a><a href="../index.html#contact">Contact</a></nav></header>
+  <main>
+    <section class="section project-hero">
+      <a class="back-link" href="../index.html#projets">← Retour aux projets</a>
+      <div class="project-hero-grid">
+        <div class="reveal"><p class="eyebrow">IAM / Active Directory</p><h1>Lab IAM / Active Directory</h1><p class="project-summary">Lab d'administration des identites : structure AD, comptes, groupes, GPO, politiques de mot de passe, delegation DHCP/DNS, controle d'acces IIS et audit.</p><div class="hero-actions"><a class="btn btn-primary" href="../assets/reports/rapport-lab-iam.pdf" target="_blank" rel="noopener">Voir le rapport PDF</a></div></div>
+        <aside class="project-meta reveal"><dl><div><dt>Stack</dt><dd>Windows Server 2019, AD DS, GPO, DHCP, DNS, IIS, ADAuditPlus, VMware</dd></div><div><dt>Objectif</dt><dd>Structurer les identites et appliquer le principe du moindre privilege</dd></div><div><dt>Validation</dt><dd>Tests de droits, verrouillage, acces web et audit</dd></div></dl></aside>
+      </div>
+    </section>
+    <section class="section"><div class="detail-grid"><article class="detail-panel reveal"><h2>Contexte</h2><p>Le lab explore les bases d'une gestion d'identites d'entreprise : organisation logique, groupes, politiques, delegation et controle d'acces.</p></article><article class="detail-panel reveal"><h2>Objectifs</h2><ul><li>Creer OU, utilisateurs et groupes.</li><li>Appliquer des GPO de mots de passe et verrouillage.</li><li>Deleguer DHCP/DNS sans donner des privileges trop larges.</li><li>Controler l'acces a IIS par groupe.</li><li>Activer et exploiter l'audit des evenements.</li></ul></article><article class="detail-panel reveal"><h2>Workflow</h2><ol class="workflow"><li>Installer et organiser Active Directory.</li><li>Creer les groupes et utilisateurs cibles.</li><li>Lier les GPO aux OU concernees.</li><li>Tester les restrictions et delegations.</li><li>Analyser les journaux et rapports d'audit.</li></ol></article><article class="detail-panel reveal"><h2>Difficultes</h2><p>Le lab demande de distinguer les droits d'administration, les droits applicatifs et les permissions systeme afin d'eviter une elevation de privileges non souhaitee.</p></article></div></section>
+    <section class="section">
+      <div class="section-heading reveal"><p class="eyebrow">Captures</p><h2>Identites, politiques et audit</h2></div>
+      <div class="media-grid">
+        <figure class="media-card reveal"><img src="../assets/img/projects/active-directory/01_01_ad_ou_structure.png" alt="Structure OU Active Directory" /><figcaption>Structure OU.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/active-directory/07_07_gpo_password_policy_hardened.png" alt="GPO mot de passe durcie" /><figcaption>Politique de mot de passe.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/active-directory/09_09_account_locked_result.png" alt="Compte verrouille" /><figcaption>Verrouillage de compte.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/active-directory/16_16_dhcp_console.png" alt="Console DHCP" /><figcaption>Delegation DHCP.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/active-directory/38_38_iis_group_allow_permissions.png" alt="Permissions IIS par groupe" /><figcaption>Controle d'acces IIS.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/active-directory/41_41_adauditplus_dashboard.png" alt="Dashboard ADAuditPlus" /><figcaption>Audit AD.</figcaption></figure>
+      </div>
+    </section>
+    <section class="section"><div class="detail-grid"><article class="detail-panel reveal"><h2>Resultats</h2><p>Le projet documente une chaine IAM complete : creation, politiques, delegation, controle d'acces et preuve d'audit.</p></article><article class="detail-panel reveal"><h2>Ameliorations prevues</h2><p>Ajouter une matrice RBAC, des scripts PowerShell de verification, et une section sur la remédiation apres detection d'evenements suspects.</p></article></div></section>
+  </main>
+  <footer class="site-footer"><span>© 2026 Akrou Franck Olivier</span><span>Lab IAM / Active Directory</span></footer>
+  <script src="../script.js"></script>
+</body>
+</html>

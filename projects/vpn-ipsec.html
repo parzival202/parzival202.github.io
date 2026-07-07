@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VPN IPsec Site-a-Site | parzival202</title>
+  <meta name="description" content="Lab VPN IPsec site-a-site FortiGate avec routage, politiques de securite, ping et acces FTP via tunnel." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="site-header" data-header><a class="brand" href="../index.html#accueil">parzival202</a><button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button><nav class="site-nav" data-nav aria-label="Navigation principale"><a href="../index.html#accueil">Accueil</a><a href="../index.html#apropos">A propos</a><a href="../index.html#experience">Experience</a><a href="../index.html#projets">Projets</a><a href="../index.html#formation">Formation</a><a href="../index.html#contact">Contact</a></nav></header>
+  <main>
+    <section class="section project-hero">
+      <a class="back-link" href="../index.html#projets">← Retour aux projets</a>
+      <div class="project-hero-grid">
+        <div class="reveal"><p class="eyebrow">WAN / FortiGate</p><h1>VPN IPsec Site-a-Site</h1><p class="project-summary">Mise en place d'un tunnel IPsec entre un site siege et une succursale, avec politiques de securite, routage et validation des flux applicatifs.</p><div class="hero-actions"><a class="btn btn-primary" href="../assets/reports/lab-wan-routeur.pdf" target="_blank" rel="noopener">Voir le rapport PDF</a></div></div>
+        <aside class="project-meta reveal"><dl><div><dt>Stack</dt><dd>FortiGate, VMware, IPsec, routage, FileZilla FTP</dd></div><div><dt>Sites</dt><dd>Site_siege et Site_B avec LAN distincts</dd></div><div><dt>Validation</dt><dd>Etat tunnel, ping inter-sites et acces FTP</dd></div></dl></aside>
+      </div>
+    </section>
+    <section class="section"><div class="detail-grid"><article class="detail-panel reveal"><h2>Contexte</h2><p>Le lab reproduit un besoin classique d'entreprise : connecter deux reseaux distants en securisant les communications entre le siege et une succursale.</p></article><article class="detail-panel reveal"><h2>Architecture</h2><p>Deux pare-feux FortiGate representent les deux sites. Les LAN locaux sont relies au travers d'un tunnel IPsec et de politiques autorisant les flux necessaires.</p></article><article class="detail-panel reveal"><h2>Fonctionnalites</h2><ul><li>Configuration WAN/LAN sur les deux FortiGate.</li><li>Phase VPN IPsec et parametres d'authentification.</li><li>Routage et politiques de securite pour les flux inter-sites.</li><li>Tests ping dans les deux sens.</li><li>Validation d'un acces FTP via le tunnel.</li></ul></article><article class="detail-panel reveal"><h2>Difficultes</h2><p>La coherence des sous-reseaux distants, des routes, des politiques et des parametres IPsec est essentielle : une seule divergence peut empecher l'etablissement ou l'usage du tunnel.</p></article></div></section>
+    <section class="section"><div class="section-heading reveal"><p class="eyebrow">Workflow</p><h2>Configuration du tunnel</h2></div><ol class="workflow reveal"><li>Definir les LAN siege et succursale.</li><li>Configurer interfaces WAN/LAN et adresses.</li><li>Creer le tunnel IPsec sur chaque FortiGate.</li><li>Ajouter les routes et politiques de securite.</li><li>Verifier le tunnel, les pings et l'acces FTP.</li></ol></section>
+    <section class="section">
+      <div class="section-heading reveal"><p class="eyebrow">Captures</p><h2>Tunnel et validations</h2></div>
+      <div class="media-grid">
+        <figure class="media-card reveal"><img src="../assets/img/projects/vpn-ipsec/01_architecture_topologie_wan_fortigate.png" alt="Topologie VPN IPsec FortiGate" /><figcaption>Topologie WAN.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/vpn-ipsec/09_vpn_site_siege_setup.png" alt="Configuration VPN site siege" /><figcaption>VPN cote siege.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/vpn-ipsec/12_vpn_site_b_setup.png" alt="Configuration VPN site B" /><figcaption>VPN cote succursale.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/vpn-ipsec/15_vpn_tunnel_site_siege_up.png" alt="Tunnel VPN up cote siege" /><figcaption>Tunnel etabli.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/vpn-ipsec/17_ping_serv_bd_vers_user1.png" alt="Ping inter-sites" /><figcaption>Ping inter-sites.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/vpn-ipsec/19_filezilla_client_ftp_success.png" alt="Acces FTP via VPN" /><figcaption>FTP via tunnel.</figcaption></figure>
+      </div>
+    </section>
+    <section class="section"><div class="detail-grid"><article class="detail-panel reveal"><h2>Resultats</h2><p>Le tunnel est documente de bout en bout : interfaces, politiques, etat du VPN et preuves de connectivite applicative.</p></article><article class="detail-panel reveal"><h2>Ameliorations prevues</h2><p>Ajouter une matrice de flux, des tests de coupure/reprise, une supervision du tunnel et une politique de journalisation plus detaillee.</p></article></div></section>
+  </main>
+  <footer class="site-footer"><span>© 2026 Akrou Franck Olivier</span><span>VPN IPsec</span></footer>
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Money Minder | parzival202</title>
+  <meta name="description" content="Page projet Money Minder : application PHP/SQLite de gestion de finances personnelles avec KPIs, budgets, graphiques et alertes Telegram." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="site-header" data-header>
+    <a class="brand" href="../index.html#accueil">parzival202</a>
+    <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button>
+    <nav class="site-nav" data-nav aria-label="Navigation principale">
+      <a href="../index.html#accueil">Accueil</a><a href="../index.html#apropos">A propos</a><a href="../index.html#experience">Experience</a><a href="../index.html#projets">Projets</a><a href="../index.html#formation">Formation</a><a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="section project-hero">
+      <a class="back-link" href="../index.html#projets">← Retour aux projets</a>
+      <div class="project-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Produit PHP / finances personnelles</p>
+          <h1>Money Minder</h1>
+          <p class="project-summary">Application de gestion budgetaire personnelle avec tableau de bord, suivi des depenses, budgets par categorie, objectifs d'epargne, visualisations et notifications Telegram.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://github.com/parzival202/Money-Minder-mark3" target="_blank" rel="noopener">Voir le depot GitHub</a>
+          </div>
+        </div>
+        <aside class="project-meta reveal">
+          <dl>
+            <div><dt>Stack</dt><dd>PHP 7.4+, SQLite, Bootstrap 5, Chart.js, Font Awesome, Telegram Bot API</dd></div>
+            <div><dt>Role</dt><dd>Conception, developpement, structuration fonctionnelle et alerting</dd></div>
+            <div><dt>Donnees</dt><dd>Base SQLite, sessions centralisees, configuration sensible externalisee</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="detail-grid">
+        <article class="detail-panel reveal"><h2>Contexte</h2><p>Le projet repond a une difficulte courante : suivre ses depenses au quotidien, comprendre les ecarts par rapport au budget et garder une vue claire du mois en cours.</p></article>
+        <article class="detail-panel reveal"><h2>Solution</h2><p>Money Minder centralise les depenses, calcule des indicateurs mensuels, visualise les postes de depense et declenche des alertes applicatives ou Telegram quand un seuil devient sensible.</p></article>
+        <article class="detail-panel reveal"><h2>Fonctionnalites</h2><ul><li>Gestion des depenses par categorie.</li><li>Budgets calcules selon le profil utilisateur.</li><li>Dashboard avec KPIs, progressions et graphiques.</li><li>Objectifs d'epargne et suivi de progression.</li><li>Administration multi-utilisateur et configuration Telegram.</li><li>Archivage mensuel et historique des cycles.</li></ul></article>
+        <article class="detail-panel reveal"><h2>Alertes Telegram</h2><p>Le systeme distingue les alertes immediates, comme depassement de limite quotidienne ou objectif atteint, et les alertes horaires espacees pour eviter de saturer l'utilisateur.</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading reveal"><p class="eyebrow">Workflow</p><h2>Cycle budgetaire</h2></div>
+      <ol class="workflow reveal">
+        <li>Ajouter une depense avec categorie et montant.</li>
+        <li>Mettre a jour les budgets et objectifs du mois.</li>
+        <li>Calculer les KPIs et l'avancement par categorie.</li>
+        <li>Declencher une alerte si un seuil est depasse ou approche.</li>
+        <li>Consulter les rapports, graphiques et archives mensuelles.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <div class="section-heading reveal"><p class="eyebrow">Captures</p><h2>Interface et indicateurs</h2></div>
+      <div class="media-grid">
+        <figure class="media-card reveal"><img src="../assets/img/projects/money-minder/01-dashboard-kpis-overview.png" alt="Dashboard Money Minder avec indicateurs financiers" /><figcaption>Dashboard KPIs mensuels.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/money-minder/03-budget-progress-categories.png" alt="Progression des budgets par categorie" /><figcaption>Budgets par categorie.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/money-minder/05-reports-analytics-charts.png" alt="Rapports et graphiques Money Minder" /><figcaption>Rapports et visualisations.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/money-minder/06-savings-tracker-goals.png" alt="Suivi des objectifs d'epargne" /><figcaption>Objectifs d'epargne.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/money-minder/08-alerts-notifications.png" alt="Alertes et notifications Money Minder" /><figcaption>Alertes et notifications.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/money-minder/04-expense-history-list.png" alt="Historique des depenses" /><figcaption>Historique des depenses.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="detail-grid">
+        <article class="detail-panel reveal"><h2>Resultats</h2><p>Le projet montre une capacite a transformer un besoin personnel en application complete : persistance, interface, indicateurs, logique metier et notifications.</p></article>
+        <article class="detail-panel reveal"><h2>Limites et suites</h2><p>Les ameliorations naturelles concernent la securisation du deploiement, l'export avance, les tests automatises et une meilleure separation entre logique metier, vues et services.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><span>© 2026 Akrou Franck Olivier</span><span>Money Minder</span></footer>
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Datacenter securise | parzival202</title>
+  <meta name="description" content="Lab mini datacenter securise avec Palo Alto, segmentation reseau, services WEB/FTP/SSH et regles de securite horaires." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="site-header" data-header><a class="brand" href="../index.html#accueil">parzival202</a><button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button><nav class="site-nav" data-nav aria-label="Navigation principale"><a href="../index.html#accueil">Accueil</a><a href="../index.html#apropos">A propos</a><a href="../index.html#experience">Experience</a><a href="../index.html#projets">Projets</a><a href="../index.html#formation">Formation</a><a href="../index.html#contact">Contact</a></nav></header>
+  <main>
+    <section class="section project-hero">
+      <a class="back-link" href="../index.html#projets">← Retour aux projets</a>
+      <div class="project-hero-grid">
+        <div class="reveal"><p class="eyebrow">Securite reseau / Palo Alto</p><h1>Mini Datacenter securise</h1><p class="project-summary">Lab de segmentation d'un mini datacenter virtualise avec Palo Alto, cinq zones reseau, services WEB/FTP/SSH, regles horaires et restriction du management.</p><div class="hero-actions"><a class="btn btn-primary" href="../assets/reports/lab-securite-datacenter.pdf" target="_blank" rel="noopener">Voir le rapport PDF</a></div></div>
+        <aside class="project-meta reveal"><dl><div><dt>Stack</dt><dd>Palo Alto, VMware, Ubuntu Server, Apache2, FTP, SSH</dd></div><div><dt>Objectif</dt><dd>Segmenter, publier et controler les flux inter-zones</dd></div><div><dt>Validation</dt><dd>Tests d'acces, services, politiques et management</dd></div></dl></aside>
+      </div>
+    </section>
+    <section class="section">
+      <div class="detail-grid">
+        <article class="detail-panel reveal"><h2>Contexte</h2><p>Le lab simule un petit environnement datacenter ou les services doivent etre exposes de facon controlee, avec separation des zones et limitation des flux.</p></article>
+        <article class="detail-panel reveal"><h2>Architecture</h2><p>La topologie repose sur VMware, plusieurs VMnet, un pare-feu Palo Alto en interfaces Layer 3 et des zones dediees pour les utilisateurs, serveurs et fonctions d'administration.</p></article>
+        <article class="detail-panel reveal"><h2>Fonctionnalites</h2><ul><li>Segmentation en cinq zones reseau.</li><li>Publication de services WEB, FTP et SSH.</li><li>Objets d'adressage et regles inter-zones.</li><li>Plages horaires pour limiter certains acces.</li><li>Restriction des adresses autorisees pour le management.</li></ul></article>
+        <article class="detail-panel reveal"><h2>Difficultes</h2><p>Le point sensible est la coherence entre plan d'adressage, interfaces VMware, zones Palo Alto, routes statiques et regles de securite. Chaque couche doit correspondre aux autres.</p></article>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-heading reveal"><p class="eyebrow">Workflow</p><h2>Construction et validation</h2></div>
+      <ol class="workflow reveal"><li>Definir la topologie et le plan d'adressage.</li><li>Configurer VMnet, interfaces Palo Alto et zones de securite.</li><li>Installer les services WEB, FTP et SSH sur les serveurs.</li><li>Creer objets, horaires, routes et politiques de securite.</li><li>Tester les acces autorises et les restrictions de management.</li></ol>
+    </section>
+    <section class="section">
+      <div class="section-heading reveal"><p class="eyebrow">Captures</p><h2>Segmentation et politiques</h2></div>
+      <div class="media-grid">
+        <figure class="media-card reveal"><img src="../assets/img/projects/mini-datacenter/01_architecture-mini-datacenter.png" alt="Architecture du mini datacenter" /><figcaption>Architecture globale.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/mini-datacenter/07_palo-alto-zones-security.png" alt="Zones de securite Palo Alto" /><figcaption>Zones Palo Alto.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/mini-datacenter/15_schedule-horaires-travail.png" alt="Schedule horaires Palo Alto" /><figcaption>Regles horaires.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/mini-datacenter/21_security-policies-overview.png" alt="Politiques de securite Palo Alto" /><figcaption>Politiques de securite.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/mini-datacenter/24_management-interface-permitted-ip.png" alt="Restriction management Palo Alto" /><figcaption>Restriction du management.</figcaption></figure>
+        <figure class="media-card reveal"><img src="../assets/img/projects/mini-datacenter/10_test-acces-web-timeo.png" alt="Test acces web" /><figcaption>Test d'acces web.</figcaption></figure>
+      </div>
+    </section>
+    <section class="section"><div class="detail-grid"><article class="detail-panel reveal"><h2>Resultats</h2><p>Le lab valide une approche complete : architecture, configuration, securisation des flux, tests de services et documentation par captures.</p></article><article class="detail-panel reveal"><h2>Ameliorations prevues</h2><p>Ajouter des journaux d'analyse, une matrice de flux, des tests de refus documentes et une supervision des services.</p></article></div></section>
+  </main>
+  <footer class="site-footer"><span>© 2026 Akrou Franck Olivier</span><span>Mini Datacenter</span></footer>
+  <script src="../script.js"></script>
+</body>
+</html>
