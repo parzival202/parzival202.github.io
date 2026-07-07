@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VPN IPsec Site-a-Site | parzival202</title>
-  <meta name="description" content="Lab VPN IPsec site-a-site FortiGate avec routage, politiques de securite, ping et acces FTP via tunnel." />
+  <meta name="description" content="Etude de cas VPN IPsec site-a-site FortiGate avec architecture WAN, configuration du tunnel, routage, ping et test FTP." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -16,24 +16,54 @@
     <section class="section project-hero">
       <a class="back-link" href="../index.html#projets">← Retour aux projets</a>
       <div class="project-hero-grid">
-        <div class="reveal"><p class="eyebrow">WAN / FortiGate</p><h1>VPN IPsec Site-a-Site</h1><p class="project-summary">Mise en place d'un tunnel IPsec entre un site siege et une succursale, avec politiques de securite, routage et validation des flux applicatifs.</p><div class="hero-actions"><a class="btn btn-primary" href="../assets/reports/lab-wan-routeur.pdf" target="_blank" rel="noopener">Voir le rapport PDF</a></div></div>
-        <aside class="project-meta reveal"><dl><div><dt>Stack</dt><dd>FortiGate, VMware, IPsec, routage, FileZilla FTP</dd></div><div><dt>Sites</dt><dd>Site_siege et Site_B avec LAN distincts</dd></div><div><dt>Validation</dt><dd>Etat tunnel, ping inter-sites et acces FTP</dd></div></dl></aside>
+        <div class="reveal"><p class="eyebrow">WAN / FortiGate</p><h1>VPN IPsec Site-a-Site</h1><p class="project-summary">Etude de cas autour d'une interconnexion securisee entre un site siege et une succursale, avec tunnel IPsec, politiques FortiGate, routage et validation applicative.</p><div class="hero-actions"><a class="btn btn-primary" href="../assets/reports/lab-wan-routeur.pdf" target="_blank" rel="noopener">Voir le rapport PDF</a></div></div>
+        <aside class="project-meta reveal"><dl><div><dt>Stack</dt><dd>FortiGate, VMware, IPsec, routage, FileZilla FTP</dd></div><div><dt>Objectif</dt><dd>Relier deux LAN distants et securiser le trafic inter-sites</dd></div><div><dt>Preuves</dt><dd>Tunnel UP, ping inter-sites, acces FTP via IPsec</dd></div></dl></aside>
       </div>
     </section>
-    <section class="section"><div class="detail-grid"><article class="detail-panel reveal"><h2>Contexte</h2><p>Le lab reproduit un besoin classique d'entreprise : connecter deux reseaux distants en securisant les communications entre le siege et une succursale.</p></article><article class="detail-panel reveal"><h2>Architecture</h2><p>Deux pare-feux FortiGate representent les deux sites. Les LAN locaux sont relies au travers d'un tunnel IPsec et de politiques autorisant les flux necessaires.</p></article><article class="detail-panel reveal"><h2>Fonctionnalites</h2><ul><li>Configuration WAN/LAN sur les deux FortiGate.</li><li>Phase VPN IPsec et parametres d'authentification.</li><li>Routage et politiques de securite pour les flux inter-sites.</li><li>Tests ping dans les deux sens.</li><li>Validation d'un acces FTP via le tunnel.</li></ul></article><article class="detail-panel reveal"><h2>Difficultes</h2><p>La coherence des sous-reseaux distants, des routes, des politiques et des parametres IPsec est essentielle : une seule divergence peut empecher l'etablissement ou l'usage du tunnel.</p></article></div></section>
-    <section class="section"><div class="section-heading reveal"><p class="eyebrow">Workflow</p><h2>Configuration du tunnel</h2></div><ol class="workflow reveal"><li>Definir les LAN siege et succursale.</li><li>Configurer interfaces WAN/LAN et adresses.</li><li>Creer le tunnel IPsec sur chaque FortiGate.</li><li>Ajouter les routes et politiques de securite.</li><li>Verifier le tunnel, les pings et l'acces FTP.</li></ol></section>
+
     <section class="section">
-      <div class="section-heading reveal"><p class="eyebrow">Captures</p><h2>Tunnel et validations</h2></div>
-      <div class="media-grid">
-        <figure class="media-card reveal"><img src="../assets/img/projects/vpn-ipsec/01_architecture_topologie_wan_fortigate.png" alt="Topologie VPN IPsec FortiGate" /><figcaption>Topologie WAN.</figcaption></figure>
-        <figure class="media-card reveal"><img src="../assets/img/projects/vpn-ipsec/09_vpn_site_siege_setup.png" alt="Configuration VPN site siege" /><figcaption>VPN cote siege.</figcaption></figure>
-        <figure class="media-card reveal"><img src="../assets/img/projects/vpn-ipsec/12_vpn_site_b_setup.png" alt="Configuration VPN site B" /><figcaption>VPN cote succursale.</figcaption></figure>
-        <figure class="media-card reveal"><img src="../assets/img/projects/vpn-ipsec/15_vpn_tunnel_site_siege_up.png" alt="Tunnel VPN up cote siege" /><figcaption>Tunnel etabli.</figcaption></figure>
-        <figure class="media-card reveal"><img src="../assets/img/projects/vpn-ipsec/17_ping_serv_bd_vers_user1.png" alt="Ping inter-sites" /><figcaption>Ping inter-sites.</figcaption></figure>
-        <figure class="media-card reveal"><img src="../assets/img/projects/vpn-ipsec/19_filezilla_client_ftp_success.png" alt="Acces FTP via VPN" /><figcaption>FTP via tunnel.</figcaption></figure>
+      <div class="detail-grid">
+        <article class="detail-panel reveal"><h2>Contexte du lab</h2><p>Le lab reproduit un besoin d'entreprise courant : permettre a une succursale d'acceder a des ressources situees au siege, sans exposer directement les services sur un reseau non maitrise.</p></article>
+        <article class="detail-panel reveal"><h2>Objectifs techniques</h2><ul><li>Construire une topologie WAN avec deux sites distincts.</li><li>Configurer les interfaces FortiGate cote siege et succursale.</li><li>Etablir un tunnel IPsec site-a-site.</li><li>Autoriser uniquement les flux necessaires entre les LAN.</li><li>Valider la connectivite par ping et par service FTP.</li></ul></article>
       </div>
     </section>
-    <section class="section"><div class="detail-grid"><article class="detail-panel reveal"><h2>Resultats</h2><p>Le tunnel est documente de bout en bout : interfaces, politiques, etat du VPN et preuves de connectivite applicative.</p></article><article class="detail-panel reveal"><h2>Ameliorations prevues</h2><p>Ajouter une matrice de flux, des tests de coupure/reprise, une supervision du tunnel et une politique de journalisation plus detaillee.</p></article></div></section>
+
+    <section class="section">
+      <div class="section-heading reveal"><p class="eyebrow">Etude de cas</p><h2>Du schema WAN au trafic applicatif valide</h2></div>
+      <div class="case-study">
+        <article class="case-step reveal">
+          <div class="case-copy"><h2>Architecture WAN</h2><p>Cette topologie presente deux sites relies via un reseau WAN simule. Le site siege heberge le serveur FTP sur le reseau 172.26.200.96/27, tandis que la succursale contient les postes utilisateurs sur le reseau 10.156.203.64/26. Les deux pare-feux FortiGate assurent l'interconnexion et la securisation du trafic via IPsec.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/vpn-ipsec/01_architecture_topologie_wan_fortigate.png" alt="Topologie WAN FortiGate entre siege et succursale" /><figcaption>Topologie WAN et plan d'adressage des deux sites.</figcaption></figure>
+        </article>
+        <article class="case-step reveal">
+          <div class="case-copy"><h2>Configuration du tunnel cote siege</h2><p>La configuration cote siege definit les parametres IPsec, le pair distant, les reseaux locaux et distants, puis les regles necessaires pour transporter le trafic du LAN siege vers le LAN succursale.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/vpn-ipsec/09_vpn_site_siege_setup.png" alt="Configuration VPN IPsec cote site siege" /><figcaption>Parametrage du tunnel sur le FortiGate du site siege.</figcaption></figure>
+        </article>
+        <article class="case-step reveal">
+          <div class="case-copy"><h2>Configuration du tunnel cote succursale</h2><p>Le deuxieme FortiGate reprend les parametres miroir : passerelle distante, reseau local de la succursale et reseau distant du siege. Cette symetrie est indispensable pour que la negociation IPsec aboutisse.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/vpn-ipsec/12_vpn_site_b_setup.png" alt="Configuration VPN IPsec cote succursale" /><figcaption>Configuration correspondante sur le FortiGate du site B.</figcaption></figure>
+        </article>
+        <article class="case-step reveal">
+          <div class="case-copy"><h2>Validation du tunnel IPsec</h2><p>Cette capture confirme que le tunnel IPsec est etabli entre les deux FortiGate. La negociation des phases IPsec est fonctionnelle et les deux reseaux LAN peuvent désormais communiquer selon les politiques definies.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/vpn-ipsec/15_vpn_tunnel_site_siege_up.png" alt="Tunnel VPN IPsec UP cote siege" /><figcaption>Etat du tunnel : le VPN est monte.</figcaption></figure>
+        </article>
+        <article class="case-step reveal">
+          <div class="case-copy"><h2>Test de communication inter-sites</h2><p>Le ping valide le routage entre les deux reseaux prives. Il prouve que les routes, les politiques FortiGate et le chiffrement IPsec permettent bien le passage du trafic entre les hôtes des deux sites.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/vpn-ipsec/17_ping_serv_bd_vers_user1.png" alt="Ping reussi entre les deux sites" /><figcaption>Test ICMP reussi entre les LAN distants.</figcaption></figure>
+        </article>
+        <article class="case-step reveal">
+          <div class="case-copy"><h2>Test applicatif FTP</h2><p>Le test FTP valide le passage d'un trafic applicatif reel a travers le tunnel. Le poste utilisateur de la succursale accede au serveur FTP du siege, ce qui confirme que l'interconnexion n'est pas seulement theorique mais utilisable pour un service metier.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/vpn-ipsec/19_filezilla_client_ftp_success.png" alt="Connexion FTP reussie via le tunnel IPsec" /><figcaption>Acces FTP fonctionnel via le tunnel IPsec.</figcaption></figure>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="detail-grid">
+        <article class="detail-panel reveal"><h2>Resultat obtenu</h2><p>Le lab prouve la capacite a concevoir, configurer et valider une interconnexion IPsec exploitable : tunnel UP, communication reseau et service applicatif fonctionnel.</p></article>
+        <article class="detail-panel reveal"><h2>Competences demontrees</h2><ul class="competency-list"><li>Architecture WAN et plan d'adressage</li><li>Configuration FortiGate site-a-site</li><li>Routage et politiques de securite</li><li>Validation reseau et applicative</li><li>Diagnostic de flux inter-sites</li><li>Documentation technique par preuves</li></ul></article>
+      </div>
+    </section>
   </main>
   <footer class="site-footer"><span>© 2026 Akrou Franck Olivier</span><span>VPN IPsec</span></footer>
   <script src="../script.js"></script>

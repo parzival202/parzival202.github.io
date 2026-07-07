@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mini Datacenter securise | parzival202</title>
-  <meta name="description" content="Lab mini datacenter securise avec Palo Alto, segmentation reseau, services WEB/FTP/SSH et regles de securite horaires." />
+  <meta name="description" content="Etude de cas mini datacenter securise : segmentation Palo Alto, zones reseau, services WEB/FTP/SSH, regles horaires et management restreint." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -16,34 +16,58 @@
     <section class="section project-hero">
       <a class="back-link" href="../index.html#projets">← Retour aux projets</a>
       <div class="project-hero-grid">
-        <div class="reveal"><p class="eyebrow">Securite reseau / Palo Alto</p><h1>Mini Datacenter securise</h1><p class="project-summary">Lab de segmentation d'un mini datacenter virtualise avec Palo Alto, cinq zones reseau, services WEB/FTP/SSH, regles horaires et restriction du management.</p><div class="hero-actions"><a class="btn btn-primary" href="../assets/reports/lab-securite-datacenter.pdf" target="_blank" rel="noopener">Voir le rapport PDF</a></div></div>
-        <aside class="project-meta reveal"><dl><div><dt>Stack</dt><dd>Palo Alto, VMware, Ubuntu Server, Apache2, FTP, SSH</dd></div><div><dt>Objectif</dt><dd>Segmenter, publier et controler les flux inter-zones</dd></div><div><dt>Validation</dt><dd>Tests d'acces, services, politiques et management</dd></div></dl></aside>
+        <div class="reveal"><p class="eyebrow">Securite reseau / Palo Alto</p><h1>Mini Datacenter securise</h1><p class="project-summary">Etude de cas d'un lab datacenter segmente : zones reseau distinctes, pare-feu Palo Alto, services WEB/FTP/SSH, regles horaires et restriction de l'administration.</p><div class="hero-actions"><a class="btn btn-primary" href="../assets/reports/lab-securite-datacenter.pdf" target="_blank" rel="noopener">Voir le rapport PDF</a></div></div>
+        <aside class="project-meta reveal"><dl><div><dt>Stack</dt><dd>Palo Alto, VMware, Ubuntu Server, Apache2, FTP, SSH</dd></div><div><dt>Objectif</dt><dd>Segmenter un environnement datacenter et maitriser les flux</dd></div><div><dt>Preuves</dt><dd>Zones, interfaces, services, politiques, schedules et management</dd></div></dl></aside>
       </div>
     </section>
+
     <section class="section">
       <div class="detail-grid">
-        <article class="detail-panel reveal"><h2>Contexte</h2><p>Le lab simule un petit environnement datacenter ou les services doivent etre exposes de facon controlee, avec separation des zones et limitation des flux.</p></article>
-        <article class="detail-panel reveal"><h2>Architecture</h2><p>La topologie repose sur VMware, plusieurs VMnet, un pare-feu Palo Alto en interfaces Layer 3 et des zones dediees pour les utilisateurs, serveurs et fonctions d'administration.</p></article>
-        <article class="detail-panel reveal"><h2>Fonctionnalites</h2><ul><li>Segmentation en cinq zones reseau.</li><li>Publication de services WEB, FTP et SSH.</li><li>Objets d'adressage et regles inter-zones.</li><li>Plages horaires pour limiter certains acces.</li><li>Restriction des adresses autorisees pour le management.</li></ul></article>
-        <article class="detail-panel reveal"><h2>Difficultes</h2><p>Le point sensible est la coherence entre plan d'adressage, interfaces VMware, zones Palo Alto, routes statiques et regles de securite. Chaque couche doit correspondre aux autres.</p></article>
+        <article class="detail-panel reveal"><h2>Contexte et faiblesses initiales</h2><p>Un environnement serveur sans segmentation claire expose trop facilement ses services internes. Le lab part de cette problématique : isoler les zones, publier uniquement les services necessaires et limiter l'administration a des sources autorisees.</p></article>
+        <article class="detail-panel reveal"><h2>Objectifs techniques</h2><ul><li>Construire une topologie segmentee sous VMware.</li><li>Configurer des interfaces Palo Alto en Layer 3.</li><li>Associer les interfaces a des zones de securite.</li><li>Publier et tester les services WEB, FTP et SSH.</li><li>Creer des regles de securite avec contraintes horaires.</li><li>Restreindre l'acces au management du pare-feu.</li></ul></article>
       </div>
     </section>
+
     <section class="section">
-      <div class="section-heading reveal"><p class="eyebrow">Workflow</p><h2>Construction et validation</h2></div>
-      <ol class="workflow reveal"><li>Definir la topologie et le plan d'adressage.</li><li>Configurer VMnet, interfaces Palo Alto et zones de securite.</li><li>Installer les services WEB, FTP et SSH sur les serveurs.</li><li>Creer objets, horaires, routes et politiques de securite.</li><li>Tester les acces autorises et les restrictions de management.</li></ol>
-    </section>
-    <section class="section">
-      <div class="section-heading reveal"><p class="eyebrow">Captures</p><h2>Segmentation et politiques</h2></div>
-      <div class="media-grid">
-        <figure class="media-card reveal"><img src="../assets/img/projects/mini-datacenter/01_architecture-mini-datacenter.png" alt="Architecture du mini datacenter" /><figcaption>Architecture globale.</figcaption></figure>
-        <figure class="media-card reveal"><img src="../assets/img/projects/mini-datacenter/07_palo-alto-zones-security.png" alt="Zones de securite Palo Alto" /><figcaption>Zones Palo Alto.</figcaption></figure>
-        <figure class="media-card reveal"><img src="../assets/img/projects/mini-datacenter/15_schedule-horaires-travail.png" alt="Schedule horaires Palo Alto" /><figcaption>Regles horaires.</figcaption></figure>
-        <figure class="media-card reveal"><img src="../assets/img/projects/mini-datacenter/21_security-policies-overview.png" alt="Politiques de securite Palo Alto" /><figcaption>Politiques de securite.</figcaption></figure>
-        <figure class="media-card reveal"><img src="../assets/img/projects/mini-datacenter/24_management-interface-permitted-ip.png" alt="Restriction management Palo Alto" /><figcaption>Restriction du management.</figcaption></figure>
-        <figure class="media-card reveal"><img src="../assets/img/projects/mini-datacenter/10_test-acces-web-timeo.png" alt="Test acces web" /><figcaption>Test d'acces web.</figcaption></figure>
+      <div class="section-heading reveal"><p class="eyebrow">Etude de cas</p><h2>Segmentation, services et controle des flux</h2></div>
+      <div class="case-study">
+        <article class="case-step reveal">
+          <div class="case-copy"><h2>Architecture segmentee</h2><p>La topologie separe les zones utilisateurs, serveurs et administration. Cette separation permet d'appliquer des politiques differentes selon la source, la destination, le service et l'horaire d'acces.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/mini-datacenter/01_architecture-mini-datacenter.png" alt="Architecture segmentee du mini datacenter" /><figcaption>Vue d'ensemble du mini datacenter et des zones.</figcaption></figure>
+        </article>
+        <article class="case-step reveal">
+          <div class="case-copy"><h2>Creation des zones reseau</h2><p>Les zones Palo Alto materialisent les frontieres de securite. Chaque flux inter-zone doit ensuite etre explicitement autorise par une politique, ce qui evite les communications implicites entre segments.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/mini-datacenter/07_palo-alto-zones-security.png" alt="Zones de securite configurees sur Palo Alto" /><figcaption>Zones de securite Palo Alto.</figcaption></figure>
+        </article>
+        <article class="case-step reveal">
+          <div class="case-copy"><h2>Configuration Palo Alto</h2><p>Les interfaces Layer 3 et les routes statiques relient les segments au pare-feu. Cette etape est centrale : elle permet au Palo Alto de devenir le point de controle des flux entre les reseaux.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/mini-datacenter/06_palo-alto-interfaces-layer3.png" alt="Interfaces Layer 3 Palo Alto" /><figcaption>Interfaces Palo Alto utilisees comme passerelles des zones.</figcaption></figure>
+        </article>
+        <article class="case-step reveal">
+          <div class="case-copy"><h2>Services WEB / FTP / SSH</h2><p>Les services publies servent de support aux tests de flux. Apache, FTP et SSH permettent de valider des usages differents : consultation web, transfert de fichiers et administration distante.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/mini-datacenter/09_apache-service-running.png" alt="Service Apache demarre sur le serveur web" /><figcaption>Service web actif pour les tests d'acces.</figcaption></figure>
+        </article>
+        <article class="case-step reveal">
+          <div class="case-copy"><h2>Regles de securite</h2><p>Les politiques definissent les flux autorises entre zones : sources, destinations, applications et actions. Elles transforment la segmentation reseau en controle operationnel des communications.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/mini-datacenter/21_security-policies-overview.png" alt="Politiques de securite Palo Alto" /><figcaption>Vue des politiques de securite appliquees.</figcaption></figure>
+        </article>
+        <article class="case-step reveal">
+          <div class="case-copy"><h2>Restrictions horaires</h2><p>Les schedules limitent certains acces aux plages definies. Cette logique montre comment une politique reseau peut integrer un contexte metier : un service peut etre autorise seulement pendant une periode precise.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/mini-datacenter/15_schedule-horaires-travail.png" alt="Schedule Palo Alto pour horaires de travail" /><figcaption>Plage horaire utilisee dans les regles de securite.</figcaption></figure>
+        </article>
+        <article class="case-step reveal">
+          <div class="case-copy"><h2>Restriction du management</h2><p>L'interface d'administration du pare-feu est limitee aux adresses autorisees. Cette mesure reduit la surface d'exposition de l'equipement le plus sensible du lab.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/mini-datacenter/24_management-interface-permitted-ip.png" alt="Restriction de l'interface management Palo Alto" /><figcaption>Acces management restreint par adresse source.</figcaption></figure>
+        </article>
       </div>
     </section>
-    <section class="section"><div class="detail-grid"><article class="detail-panel reveal"><h2>Resultats</h2><p>Le lab valide une approche complete : architecture, configuration, securisation des flux, tests de services et documentation par captures.</p></article><article class="detail-panel reveal"><h2>Ameliorations prevues</h2><p>Ajouter des journaux d'analyse, une matrice de flux, des tests de refus documentes et une supervision des services.</p></article></div></section>
+
+    <section class="section">
+      <div class="detail-grid">
+        <article class="detail-panel reveal"><h2>Tests de validation</h2><p>Les tests confirment que les services exposes sont joignables uniquement selon les flux prevus. Le lab valide donc a la fois la connectivite, les regles de filtrage et les restrictions d'administration.</p></article>
+        <article class="detail-panel reveal"><h2>Competences demontrees</h2><ul class="competency-list"><li>Segmentation reseau</li><li>Configuration Palo Alto</li><li>Zones et politiques inter-zones</li><li>Publication controlee de services</li><li>Restrictions horaires</li><li>Durcissement de l'administration</li></ul></article>
+      </div>
+    </section>
   </main>
   <footer class="site-footer"><span>© 2026 Akrou Franck Olivier</span><span>Mini Datacenter</span></footer>
   <script src="../script.js"></script>

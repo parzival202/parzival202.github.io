@@ -201,10 +201,44 @@ h3 { line-height: 1.2; letter-spacing: 0; }
 .media-card figcaption { padding: 8px 10px; color: var(--muted); font-size: 12px; }
 .placeholder { display: grid; place-items: center; aspect-ratio: 16/10; color: var(--faint); background: repeating-linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.04) 10px, transparent 10px, transparent 20px); }
 .code-block { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; padding: 12px; background: #05070a; color: #d7fff7; font: 12px/1.55 "JetBrains Mono", monospace; }
+.case-study { display: grid; gap: 18px; }
+.case-step {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(360px, 1.08fr);
+  gap: 22px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(17,24,35,.78);
+  padding: 18px;
+}
+.case-step:nth-child(even) .case-copy { order: 2; }
+.case-step:nth-child(even) .case-visual { order: 1; }
+.case-copy h2 { font-size: clamp(22px, 2.5vw, 32px); margin-bottom: 10px; }
+.case-copy p, .case-copy li { color: var(--muted); }
+.case-copy ul { margin: 0; padding-left: 18px; }
+.case-visual {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--panel);
+}
+.case-visual img { width: 100%; max-height: 420px; object-fit: contain; background: #05070a; }
+.case-visual figcaption { padding: 9px 11px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); }
+.competency-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 0; list-style: none; }
+.competency-list li {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 11px 12px;
+  color: #d5deea;
+  background: rgba(255,255,255,.03);
+}
 
 @media (max-width: 980px) {
   .hero, .about-layout, .project-hero-grid { grid-template-columns: 1fr; }
   .projects-grid, .education-grid, .media-grid { grid-template-columns: repeat(2, 1fr); }
+  .case-step { grid-template-columns: 1fr; }
+  .case-step:nth-child(even) .case-copy, .case-step:nth-child(even) .case-visual { order: initial; }
 }
 @media (max-width: 720px) {
   .site-nav {
@@ -225,6 +259,8 @@ h3 { line-height: 1.2; letter-spacing: 0; }
   .section { width: min(100% - 28px, 1120px); padding: 62px 0; }
   .hero { padding-top: 92px; }
   .projects-grid, .education-grid, .detail-grid, .media-grid { grid-template-columns: 1fr; }
+  .case-step { padding: 14px; }
+  .competency-list { grid-template-columns: 1fr; }
   .site-footer { flex-direction: column; }
 }
 @media (prefers-reduced-motion: reduce) {
