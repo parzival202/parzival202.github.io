@@ -1,1 +1,861 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akrou Franck Olivier — Ingénieur Réseaux & Sécurité</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg: #0A0A0F;
+      --bg-card: #111118;
+      --bg-hover: #1A1A26;
+      --accent: #00D4FF;
+      --accent-dim: rgba(0, 212, 255, 0.12);
+      --text: #FFFFFF;
+      --text-muted: #6B7280;
+      --border: rgba(255,255,255,0.07);
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 2.5rem;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+    }
+
+    .hero-status {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .status-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .hero-name span { color: var(--accent); }
+
+    .hero-title {
+      font-family: var(--font-mono);
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      min-height: 1.5em;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--accent);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      padding: 0.75rem 1.75rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover { background: #33DCFF; }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ─── LAYOUT ─── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 6rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── À PROPOS ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .about-text p strong { color: var(--text); }
+
+    .skills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .skill-item {}
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-name {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 0.2rem 0.6rem;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border-radius: 3px;
+      border: 1px solid rgba(0,212,255,0.2);
+    }
+
+    .tag-neutral {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-muted);
+      border-color: var(--border);
+    }
+
+    /* ─── EXPÉRIENCES ─── */
+    .timeline {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 6px; bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2.5rem;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -1.5rem;
+      top: 6px;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--accent);
+      transform: translateX(-3px);
+    }
+
+    .timeline-dot.active { background: var(--accent); }
+
+    .timeline-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.05em;
+    }
+
+    .timeline-role {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-company {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .timeline-list li {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .timeline-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* ─── PROJETS ─── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, background 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .project-card:hover {
+      border-color: rgba(0,212,255,0.3);
+      background: var(--bg-hover);
+    }
+
+    .project-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .project-category {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+    }
+
+    .cat-security {
+      background: rgba(0,212,255,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(0,212,255,0.2);
+    }
+
+    .cat-dev {
+      background: rgba(139,92,246,0.1);
+      color: #A78BFA;
+      border: 1px solid rgba(139,92,246,0.2);
+    }
+
+    .project-arrow {
+      color: var(--text-muted);
+      font-size: 16px;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover .project-arrow {
+      color: var(--accent);
+      transform: translate(2px, -2px);
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    /* ─── FORMATION ─── */
+    .education-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .edu-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .edu-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .edu-school {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-degree {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .edu-year {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent);
+      white-space: nowrap;
+      padding-top: 3px;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      text-align: center;
+    }
+
+    #contact .section-title { margin-bottom: 1rem; }
+
+    .contact-sub {
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 1.25rem; }
+      section { padding: 4rem 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .status-dot, .cursor { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">akrou.fo</span>
+    <ul class="nav-links">
+      <li><a href="#about">à propos</a></li>
+      <li><a href="#experience">expérience</a></li>
+      <li><a href="#projects">projets</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-status">
+      <span class="status-dot"></span>
+      Disponible · Abidjan, Côte d'Ivoire
+    </div>
+    <h1 class="hero-name">Akrou<br /><span>Franck Olivier</span></h1>
+    <p class="hero-title">
+      <span id="typewriter"></span><span class="cursor"></span>
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">Voir les projets</a>
+      <a href="mailto:akroufranckolivier@gmail.com" class="btn btn-secondary">Me contacter</a>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">// 01</p>
+      <h2 class="section-title">À propos</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Technicien Réseaux & Sécurité en <strong>Master II Sécurité et Administration des Systèmes</strong>, je combine une expérience terrain de plus de deux ans avec une pratique active de labs et projets personnels.</p>
+          <p>Habitué aux environnements virtualisés, à la gestion d'incidents et à la sécurisation d'infrastructures, je cherche à évoluer vers des rôles où la rigueur technique et l'initiative font la différence.</p>
+          <p>Actuellement en poste chez <strong>SIVOP Côte d'Ivoire</strong> comme Technicien Administrateur Systèmes & Réseaux Junior.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <div class="skill-name">Réseaux & Infrastructure</div>
+            <div class="skill-tags">
+              <span class="tag">TCP/IP</span>
+              <span class="tag">DNS</span>
+              <span class="tag">DHCP</span>
+              <span class="tag">VPN</span>
+              <span class="tag">VLAN</span>
+              <span class="tag">Routage</span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Pare-feux & Sécurité</div>
+            <div class="skill-tags">
+              <span class="tag">Fortigate</span>
+              <span class="tag">Palo Alto</span>
+              <span class="tag">Nessus</span>
+              <span class="tag">Nmap</span>
+              <span class="tag">Wireshark</span>
+              <span class="tag tag-neutral">ISO 27001</span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Systèmes</div>
+            <div class="skill-tags">
+              <span class="tag tag-neutral">Windows Server</span>
+              <span class="tag tag-neutral">Linux Ubuntu</span>
+              <span class="tag tag-neutral">Active Directory</span>
+              <span class="tag tag-neutral">GLPI</span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Virtualisation</div>
+            <div class="skill-tags">
+              <span class="tag tag-neutral">VMware</span>
+              <span class="tag tag-neutral">VirtualBox</span>
+              <span class="tag tag-neutral">Hyper-V</span>
+              <span class="tag tag-neutral">ESXi</span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Développement</div>
+            <div class="skill-tags">
+              <span class="tag tag-neutral">Python</span>
+              <span class="tag tag-neutral">PHP</span>
+              <span class="tag tag-neutral">Next.js</span>
+              <span class="tag tag-neutral">SQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPÉRIENCES -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-label">// 02</p>
+      <h2 class="section-title">Expérience</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot active"></div>
+          <div class="timeline-meta">Juin 2025 — Aujourd'hui</div>
+          <div class="timeline-role">Technicien / Administrateur Systèmes & Réseaux Junior</div>
+          <div class="timeline-company">SIVOP Côte d'Ivoire</div>
+          <ul class="timeline-list">
+            <li>Support utilisateur N1/N2 : diagnostic et résolution d'incidents matériels, logiciels et réseau.</li>
+            <li>Exploitation, configuration et maintenance des équipements réseau et systèmes.</li>
+            <li>Maintien en condition opérationnelle des postes, imprimantes et services IT.</li>
+            <li>Application des bonnes pratiques : gestion des accès, supervision, sauvegarde.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-meta">Mars 2024 — Mars 2025</div>
+          <div class="timeline-role">Stagiaire Administrateur Systèmes & Réseaux</div>
+          <div class="timeline-company">SGS Côte d'Ivoire</div>
+          <ul class="timeline-list">
+            <li>Assistance utilisateur N1/N2 auprès de plus de 30 utilisateurs via GLPI.</li>
+            <li>Administration des serveurs Windows, comptes utilisateurs et droits d'accès.</li>
+            <li>Gestion et supervision d'un parc informatique d'environ 80 équipements.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-meta">Septembre — Novembre 2023</div>
+          <div class="timeline-role">Stagiaire IT Helpdesk</div>
+          <div class="timeline-company">SOGELUX</div>
+          <ul class="timeline-list">
+            <li>Support de proximité pour incidents matériels, logiciels et réseau.</li>
+            <li>Maintenance préventive et curative des postes et équipements informatiques.</li>
+            <li>Diagnostic des pannes et remise en service des outils utilisateurs.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETS -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label">// 03</p>
+      <h2 class="section-title">Projets</h2>
+      <div class="projects-grid">
+
+        <!-- Sécurité -->
+        <div class="project-card">
+          <div class="project-card-top">
+            <span class="project-category cat-security">SÉCURITÉ</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <div class="project-title">Mini Datacenter sécurisé</div>
+          <div class="project-desc">Déploiement d'un mini datacenter virtualisé sous VMware avec pare-feu Palo Alto. Segmentation en 5 zones réseau distinctes, règles inter-zones avec plages horaires, services Apache2, FTP et SSH sécurisés.</div>
+          <div class="project-stack">
+            <span class="tag">Palo Alto</span>
+            <span class="tag tag-neutral">VMware</span>
+            <span class="tag tag-neutral">Ubuntu Server</span>
+            <span class="tag tag-neutral">Apache2</span>
+          </div>
+        </div>
+
+        <a class="project-card" href="https://github.com/parzival202/Money-Minder-mark3" target="_blank" rel="noopener">
+          <div class="project-card-top">
+            <span class="project-category cat-dev">DÉVELOPPEMENT</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <div class="project-title">Money Minder</div>
+          <div class="project-desc">Application web de gestion financière personnelle avec dashboard KPIs, graphiques Chart.js et bot Telegram pour les notifications et alertes automatisées.</div>
+          <div class="project-stack">
+            <span class="tag tag-neutral">PHP</span>
+            <span class="tag tag-neutral">SQLite</span>
+            <span class="tag tag-neutral">Chart.js</span>
+            <span class="tag tag-neutral">Telegram API</span>
+          </div>
+        </a>
+
+        <div class="project-card">
+          <div class="project-card-top">
+            <span class="project-category cat-security">SÉCURITÉ</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <div class="project-title">VPN IPsec Site-à-Site</div>
+          <div class="project-desc">Configuration d'un tunnel VPN IPsec entre deux pare-feux Fortigate (siège/succursale) sous VMware. Chiffrement AES-256/SHA-1, routage inter-sites, validation FTP et ping à travers le tunnel.</div>
+          <div class="project-stack">
+            <span class="tag">Fortigate</span>
+            <span class="tag tag-neutral">IPsec</span>
+            <span class="tag tag-neutral">AES-256</span>
+            <span class="tag tag-neutral">VMware</span>
+          </div>
+        </div>
+
+        <a class="project-card" href="https://github.com/parzival202/python-pour-test-d-intrusion" target="_blank" rel="noopener">
+          <div class="project-card-top">
+            <span class="project-category cat-security">PENTEST</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <div class="project-title">Framework Pentest Python</div>
+          <div class="project-desc">Outil de test d'intrusion modulaire développé en Python. Modules de scan réseau/web, OSINT, reporting HTML/JSON/PDF. Architecture core/modules/reporting.</div>
+          <div class="project-stack">
+            <span class="tag tag-neutral">Python</span>
+            <span class="tag tag-neutral">Nmap</span>
+            <span class="tag tag-neutral">OSINT</span>
+            <span class="tag tag-neutral">Reporting</span>
+          </div>
+        </a>
+
+        <div class="project-card">
+          <div class="project-card-top">
+            <span class="project-category cat-security">SÉCURITÉ</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <div class="project-title">Déploiement GLPI</div>
+          <div class="project-desc">Installation et configuration complète de GLPI 11.0.6 sur Ubuntu Server 24.04 avec Apache, PHP et MariaDB. Résolution d'incidents techniques documentés étape par étape.</div>
+          <div class="project-stack">
+            <span class="tag tag-neutral">GLPI</span>
+            <span class="tag tag-neutral">Ubuntu</span>
+            <span class="tag tag-neutral">Apache</span>
+            <span class="tag tag-neutral">MariaDB</span>
+          </div>
+        </div>
+
+        <a class="project-card" href="https://github.com/parzival202/It-asset-manager-ITAM-" target="_blank" rel="noopener">
+          <div class="project-card-top">
+            <span class="project-category cat-dev">DÉVELOPPEMENT</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <div class="project-title">IT Asset Manager (ITAM)</div>
+          <div class="project-desc">Application web de gestion de parc informatique développée pour mon entreprise actuelle. Interface moderne pour inventaire, suivi et administration des équipements IT.</div>
+          <div class="project-stack">
+            <span class="tag tag-neutral">Next.js</span>
+            <span class="tag tag-neutral">TypeScript</span>
+            <span class="tag tag-neutral">React</span>
+          </div>
+        </a>
+
+        <div class="project-card" style="grid-column: span 2;">
+          <div class="project-card-top">
+            <span class="project-category cat-security">IAM</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <div class="project-title">Gestion des identités — Active Directory</div>
+          <div class="project-desc">Lab IAM sous VMware avec Windows Server 2019, AD DS et poste Windows 10 intégré au domaine. Structuration des OU, création d'utilisateurs et groupes, gestion des droits, GPO de politique de mots de passe, contrôle d'accès par groupe sur IIS, audit des privilèges et ADAuditPlus.</div>
+          <div class="project-stack">
+            <span class="tag">Active Directory</span>
+            <span class="tag tag-neutral">Windows Server 2019</span>
+            <span class="tag tag-neutral">GPO</span>
+            <span class="tag tag-neutral">IIS</span>
+            <span class="tag tag-neutral">ADAuditPlus</span>
+            <span class="tag tag-neutral">VMware</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATION -->
+  <section id="education">
+    <div class="container">
+      <p class="section-label">// 04</p>
+      <h2 class="section-title">Formation</h2>
+      <div class="education-list">
+        <div class="edu-item">
+          <div>
+            <div class="edu-school">Université Polytechnique de Bingerville</div>
+            <div class="edu-degree">Master II — Sécurité et Administration des Systèmes</div>
+          </div>
+          <div class="edu-year">2024 — 2026</div>
+        </div>
+        <div class="edu-item">
+          <div>
+            <div class="edu-school">Université Polytechnique de Bingerville</div>
+            <div class="edu-degree">Licence — Administration & Sécurité Système (ASSRI)</div>
+          </div>
+          <div class="edu-year">2021 — 2024</div>
+        </div>
+        <div class="edu-item">
+          <div>
+            <div class="edu-school">Lycée Municipal de Bonoua</div>
+            <div class="edu-degree">Baccalauréat D</div>
+          </div>
+          <div class="edu-year">2020</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label">// 05</p>
+      <h2 class="section-title">Contact</h2>
+      <p class="contact-sub">Disponible pour des opportunités en réseaux, sécurité et administration des systèmes. N'hésitez pas à me contacter.</p>
+      <div class="contact-links">
+        <a href="mailto:akroufranckolivier@gmail.com" class="btn btn-primary">akroufranckolivier@gmail.com</a>
+        <a href="https://github.com/parzival202" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
+        <a href="tel:+22507773290" class="btn btn-secondary">+225 07 77 32 90 19</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Akrou Franck Olivier — Abidjan, Côte d'Ivoire</span>
+  </footer>
+
+  <script>
+    // Typewriter effect
+    const phrases = [
+      'Ingénieur Réseaux & Sécurité',
+      'Administrateur Systèmes',
+      'Fortigate · Palo Alto · VMware',
+    ];
+    let pi = 0, ci = 0, deleting = false;
+    const el = document.getElementById('typewriter');
+
+    function type() {
+      const phrase = phrases[pi];
+      if (!deleting) {
+        el.textContent = phrase.slice(0, ++ci);
+        if (ci === phrase.length) { deleting = true; setTimeout(type, 2000); return; }
+      } else {
+        el.textContent = phrase.slice(0, --ci);
+        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+      }
+      setTimeout(type, deleting ? 40 : 65);
+    }
+    type();
+
+    // Smooth active nav
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(l => l.style.color = '');
+          const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+          if (active) active.style.color = '#fff';
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
