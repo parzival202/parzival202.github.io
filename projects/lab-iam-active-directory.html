@@ -4,68 +4,68 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lab IAM / Active Directory | parzival202</title>
-  <meta name="description" content="Etude de cas IAM Active Directory : OU, utilisateurs, groupes, GPO, verrouillage, delegation DHCP/DNS, controle d'acces et audit." />
+  <meta name="description" content="Étude de cas IAM Active Directory : OU, utilisateurs, groupes, GPO, verrouillage, délégation DHCP/DNS, contrôle d'accès et audit." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-  <header class="site-header" data-header><a class="brand" href="../index.html#accueil">parzival202</a><button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button><nav class="site-nav" data-nav aria-label="Navigation principale"><a href="../index.html#accueil">Accueil</a><a href="../index.html#apropos">A propos</a><a href="../index.html#experience">Experience</a><a href="../index.html#projets">Projets</a><a href="../index.html#formation">Formation</a><a href="../index.html#contact">Contact</a></nav></header>
+  <header class="site-header" data-header><a class="brand" href="../index.html#accueil">parzival202</a><button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button><nav class="site-nav" data-nav aria-label="Navigation principale"><a href="../index.html#accueil">Accueil</a><a href="../index.html#apropos">À propos</a><a href="../index.html#experience">Expérience</a><a href="../index.html#projets">Projets</a><a href="../index.html#formation">Formation</a><a href="../index.html#contact">Contact</a></nav></header>
   <main>
     <section class="section project-hero">
       <a class="back-link" href="../index.html#projets">← Retour aux projets</a>
       <div class="project-hero-grid">
-        <div class="reveal"><p class="eyebrow">IAM / Active Directory</p><h1>Lab IAM / Active Directory</h1><p class="project-summary">Etude de cas sur la gestion des identites : structure AD, comptes, groupes, GPO, politiques de securite, delegation DHCP/DNS, controle d'acces IIS et audit.</p><div class="hero-actions"><a class="btn btn-primary" href="../assets/reports/rapport-lab-iam.pdf" target="_blank" rel="noopener">Voir le rapport PDF</a></div></div>
-        <aside class="project-meta reveal"><dl><div><dt>Stack</dt><dd>Windows Server 2019, AD DS, GPO, DHCP, DNS, IIS, ADAuditPlus, VMware</dd></div><div><dt>Objectif</dt><dd>Structurer les identites et appliquer le moindre privilege</dd></div><div><dt>Preuves</dt><dd>OU, GPO, verrouillage, delegation, controle d'acces et audit</dd></div></dl></aside>
+        <div class="reveal"><p class="eyebrow">IAM / Active Directory</p><h1>Lab IAM / Active Directory</h1><p class="project-summary">Étude de cas sur la gestion des identités : structure AD, comptes, groupes, GPO, politiques de sécurité, délégation DHCP/DNS, contrôle d'accès IIS et audit.</p><div class="hero-actions"><a class="btn btn-primary" href="../assets/reports/rapport-lab-iam.pdf" target="_blank" rel="noopener">Voir le rapport PDF</a></div></div>
+        <aside class="project-meta reveal"><dl><div><dt>Stack</dt><dd>Windows Server 2019, AD DS, GPO, DHCP, DNS, IIS, ADAuditPlus, VMware</dd></div><div><dt>Objectif</dt><dd>Structurer les identités et appliquer le moindre privilège</dd></div><div><dt>Preuves</dt><dd>OU, GPO, verrouillage, délégation, contrôle d'accès et audit</dd></div></dl></aside>
       </div>
     </section>
 
     <section class="section">
       <div class="detail-grid">
-        <article class="detail-panel reveal"><h2>Contexte IAM</h2><p>Dans un environnement Windows, la gestion des identites ne se limite pas a creer des comptes. Elle doit organiser les objets, limiter les privileges, appliquer des politiques et tracer les actions sensibles.</p></article>
-        <article class="detail-panel reveal"><h2>Objectifs techniques</h2><ul><li>Structurer Active Directory avec des OU lisibles.</li><li>Creer utilisateurs et groupes selon les roles.</li><li>Appliquer des GPO de mot de passe et verrouillage.</li><li>Deleguer DHCP/DNS sans donner de droits globaux.</li><li>Controler l'acces a une ressource IIS par groupe.</li><li>Activer l'audit et consulter les evenements.</li></ul></article>
+        <article class="detail-panel reveal"><h2>Contexte IAM</h2><p>Dans un environnement Windows, la gestion des identités ne se limite pas à créer des comptes. Elle doit organiser les objets, limiter les privilèges, appliquer des politiques et tracer les actions sensibles.</p></article>
+        <article class="detail-panel reveal"><h2>Objectifs techniques</h2><ul><li>Structurer Active Directory avec des OU lisibles.</li><li>Créer utilisateurs et groupes selon les rôles.</li><li>Appliquer des GPO de mot de passe et verrouillage.</li><li>Déléguer DHCP/DNS sans donner de droits globaux.</li><li>Contrôler l'accès à une ressource IIS par groupe.</li><li>Activer l'audit et consulter les événements.</li></ul></article>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-heading reveal"><p class="eyebrow">Etude de cas</p><h2>Structurer, proteger et auditer les identites</h2></div>
+      <div class="section-heading reveal"><p class="eyebrow">Étude de cas</p><h2>Structurer, protéger et auditer les identités</h2></div>
       <div class="case-study">
         <article class="case-step reveal">
-          <div class="case-copy"><h2>Structure Active Directory</h2><p>La structure en OU sert de base a l'administration : elle separe les utilisateurs, groupes et fonctions techniques afin de cibler les politiques et de garder un annuaire lisible.</p></div>
+          <div class="case-copy"><h2>Structure Active Directory</h2><p>La structure en OU sert de base à l'administration : elle sépare les utilisateurs, groupes et fonctions techniques afin de cibler les politiques et de garder un annuaire lisible.</p></div>
           <figure class="case-visual"><img src="../assets/img/projects/active-directory/01_01_ad_ou_structure.png" alt="Structure des OU Active Directory" /><figcaption>Organisation initiale des OU dans Active Directory.</figcaption></figure>
         </article>
         <article class="case-step reveal">
-          <div class="case-copy"><h2>Gestion des utilisateurs et groupes</h2><p>Les comptes sont rattaches a des groupes pour eviter l'attribution directe de droits. Cette approche facilite les changements d'affectation et reduit les erreurs de privilege.</p></div>
-          <figure class="case-visual"><img src="../assets/img/projects/active-directory/02_02_ad_user_creation.png" alt="Creation d'un utilisateur Active Directory" /><figcaption>Creation d'un utilisateur dans l'annuaire.</figcaption></figure>
+          <div class="case-copy"><h2>Gestion des utilisateurs et groupes</h2><p>Les comptes sont rattachés à des groupes pour éviter l'attribution directe de droits. Cette approche facilite les changements d'affectation et réduit les erreurs de privilège.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/active-directory/02_02_ad_user_creation.png" alt="Création d'un utilisateur Active Directory" /><figcaption>Création d'un utilisateur dans l'annuaire.</figcaption></figure>
         </article>
         <article class="case-step reveal">
-          <div class="case-copy"><h2>Droits et privileges</h2><p>Les groupes techniques comme Remote Desktop Users permettent d'accorder un droit precis sans transformer l'utilisateur en administrateur complet. Le principe du moindre privilege devient concret.</p></div>
-          <figure class="case-visual"><img src="../assets/img/projects/active-directory/03_03_remote_desktop_group.png" alt="Ajout a un groupe de droits Active Directory" /><figcaption>Affectation a un groupe de droits cible.</figcaption></figure>
+          <div class="case-copy"><h2>Droits et privilèges</h2><p>Les groupes techniques comme Remote Desktop Users permettent d'accorder un droit précis sans transformer l'utilisateur en administrateur complet. Le principe du moindre privilège devient concret.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/active-directory/03_03_remote_desktop_group.png" alt="Ajout à un groupe de droits Active Directory" /><figcaption>Affectation à un groupe de droits ciblé.</figcaption></figure>
         </article>
         <article class="case-step reveal">
-          <div class="case-copy"><h2>GPO et politiques de mot de passe</h2><p>La GPO applique une politique de mot de passe durcie. Cette etape montre comment standardiser une regle de securite sur un ensemble d'utilisateurs sans configuration poste par poste.</p></div>
-          <figure class="case-visual"><img src="../assets/img/projects/active-directory/07_07_gpo_password_policy_hardened.png" alt="Politique de mot de passe durcie par GPO" /><figcaption>Politique de mot de passe appliquee par GPO.</figcaption></figure>
+          <div class="case-copy"><h2>GPO et politiques de mot de passe</h2><p>La GPO applique une politique de mot de passe durcie. Cette étape montre comment standardiser une règle de sécurité sur un ensemble d'utilisateurs sans configuration poste par poste.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/active-directory/07_07_gpo_password_policy_hardened.png" alt="Politique de mot de passe durcie par GPO" /><figcaption>Politique de mot de passe appliquée par GPO.</figcaption></figure>
         </article>
         <article class="case-step reveal">
-          <div class="case-copy"><h2>Verrouillage et de deverrouillage de compte</h2><p>La politique de verrouillage limite les tentatives d'authentification. La capture prouve que la regle produit un effet visible sur le compte lorsque le seuil est atteint.</p></div>
-          <figure class="case-visual"><img src="../assets/img/projects/active-directory/09_09_account_locked_result.png" alt="Compte Active Directory verrouille apres echecs" /><figcaption>Compte verrouille apres depassement du seuil.</figcaption></figure>
+          <div class="case-copy"><h2>Verrouillage et déverrouillage de compte</h2><p>La politique de verrouillage limite les tentatives d'authentification. La capture prouve que la règle produit un effet visible sur le compte lorsque le seuil est atteint.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/active-directory/09_09_account_locked_result.png" alt="Compte Active Directory verrouillé après échecs" /><figcaption>Compte verrouillé après dépassement du seuil.</figcaption></figure>
         </article>
         <article class="case-step reveal">
-          <div class="case-copy"><h2>Delegation DHCP/DNS</h2><p>La delegation donne a un utilisateur technique la capacite d'administrer un service precis sans ouvrir l'ensemble de l'annuaire. C'est une application directe du controle d'acces base sur le role.</p></div>
-          <figure class="case-visual"><img src="../assets/img/projects/active-directory/16_16_dhcp_console.png" alt="Console DHCP utilisee par un administrateur delegue" /><figcaption>Administration DHCP dans un perimetre delegue.</figcaption></figure>
+          <div class="case-copy"><h2>Délégation DHCP/DNS</h2><p>La délégation donne à un utilisateur technique la capacité d'administrer un service précis sans ouvrir l'ensemble de l'annuaire. C'est une application directe du contrôle d'accès basé sur le rôle.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/active-directory/16_16_dhcp_console.png" alt="Console DHCP utilisée par un administrateur délégué" /><figcaption>Administration DHCP dans un périmètre délégué.</figcaption></figure>
         </article>
         <article class="case-step reveal">
-          <div class="case-copy"><h2>Controle d'acces et audit</h2><p>Le controle d'acces par groupe est complete par l'audit. ADAuditPlus permet de suivre les evenements sensibles comme creations d'utilisateurs, changements de droits et echecs de connexion.</p></div>
-          <figure class="case-visual"><img src="../assets/img/projects/active-directory/41_41_adauditplus_dashboard.png" alt="Dashboard ADAuditPlus pour audit Active Directory" /><figcaption>Vue d'audit des evenements Active Directory.</figcaption></figure>
+          <div class="case-copy"><h2>Contrôle d'accès et audit</h2><p>Le contrôle d'accès par groupe est complété par l'audit. ADAuditPlus permet de suivre les événements sensibles comme créations d'utilisateurs, changements de droits et échecs de connexion.</p></div>
+          <figure class="case-visual"><img src="../assets/img/projects/active-directory/41_41_adauditplus_dashboard.png" alt="Dashboard ADAuditPlus pour audit Active Directory" /><figcaption>Vue d'audit des événements Active Directory.</figcaption></figure>
         </article>
       </div>
     </section>
 
     <section class="section">
       <div class="detail-grid">
-        <article class="detail-panel reveal"><h2>Resultat obtenu</h2><p>Le lab demontre une chaine IAM complete : organisation de l'annuaire, attribution de droits, application de politiques, delegation de services et controle par audit.</p></article>
-        <article class="detail-panel reveal"><h2>Competences demontrees</h2><ul class="competency-list"><li>Administration Active Directory</li><li>Gestion OU, utilisateurs et groupes</li><li>GPO de securite</li><li>Controle du moindre privilege</li><li>Delegation DHCP/DNS</li><li>Audit et tracabilite</li></ul></article>
+        <article class="detail-panel reveal"><h2>Résultat obtenu</h2><p>Le lab démontre une chaîne IAM complète : organisation de l'annuaire, attribution de droits, application de politiques, délégation de services et contrôle par audit.</p></article>
+        <article class="detail-panel reveal"><h2>Compétences démontrées</h2><ul class="competency-list"><li>Administration Active Directory</li><li>Gestion OU, utilisateurs et groupes</li><li>GPO de sécurité</li><li>Contrôle du moindre privilège</li><li>Délégation DHCP/DNS</li><li>Audit et traçabilité</li></ul></article>
       </div>
     </section>
   </main>
