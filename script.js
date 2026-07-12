@@ -59,15 +59,61 @@ document.querySelectorAll(".case-visual img, .media-card img").forEach(img => im
 
 const sections = [...document.querySelectorAll("main section[id]")];
 const navLinks = [...document.querySelectorAll(".site-nav a")];
+const railMarks = [...document.querySelectorAll("[data-rail-mark]")];
 const activeObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     navLinks.forEach(link => {
       link.classList.toggle("is-active", link.getAttribute("href") === `#${entry.target.id}`);
     });
+    railMarks.forEach(mark => {
+      mark.classList.toggle("is-active", mark.dataset.railMark === entry.target.id);
+    });
   });
 }, { rootMargin: "-35% 0px -55% 0px" });
 sections.forEach(section => activeObserver.observe(section));
+
+// Vertical scroll progress rail: fill + thumb track total scroll, marks sit at
+// each section's actual position in the document so they stay accurate on resize.
+const rail = document.querySelector("[data-scroll-rail]");
+if (rail) {
+  const railFill = rail.querySelector("[data-rail-fill]");
+  const railThumb = rail.querySelector("[data-rail-thumb]");
+
+  function scrollProgress() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    return max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+  }
+
+  function layoutRailMarks() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (max <= 0) return;
+    railMarks.forEach(mark => {
+      const section = document.getElementById(mark.dataset.railMark);
+      if (!section) return;
+      const pct = Math.min(1, Math.max(0, section.offsetTop / max));
+      mark.parentElement.style.top = `${pct * 100}%`;
+    });
+  }
+
+  function updateRail() {
+    const pct = scrollProgress() * 100;
+    railFill.style.height = `${pct}%`;
+    railThumb.style.top = `${pct}%`;
+  }
+
+  let railTicking = false;
+  window.addEventListener("scroll", () => {
+    if (!railTicking) {
+      requestAnimationFrame(() => { updateRail(); railTicking = false; });
+      railTicking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener("resize", layoutRailMarks);
+  layoutRailMarks();
+  updateRail();
+}
 
 // Custom cursor + magnetic / tilt hover effects (pointer devices only).
 if (canHover && !reduceMotion) {

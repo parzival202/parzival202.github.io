@@ -110,6 +110,72 @@ html.has-custom-cursor, html.has-custom-cursor a, html.has-custom-cursor button 
 .menu-toggle { display: none; background: none; border: 0; padding: 8px; cursor: pointer; }
 .menu-toggle span { display: block; width: 20px; height: 1px; margin: 5px 0; background: var(--text); }
 
+/* Scroll progress rail */
+.scroll-rail {
+  position: fixed;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+.scroll-rail-track {
+  position: relative;
+  width: 2px;
+  height: min(58vh, 620px);
+  background: var(--line);
+  border-radius: 2px;
+  pointer-events: auto;
+}
+.scroll-rail-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0%;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.scroll-rail-thumb {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+  transform: translate(-50%, -50%);
+}
+.scroll-rail-marks { position: absolute; inset: 0; list-style: none; margin: 0; padding: 0; }
+.scroll-rail-marks li { position: absolute; left: 50%; top: 0%; transform: translate(-50%, -50%); }
+.scroll-rail-marks a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  text-decoration: none;
+  transition: border-color .25s ease, background .25s ease, transform .25s cubic-bezier(.16,1,.3,1);
+}
+.scroll-rail-marks span {
+  font: 600 9px/1 "JetBrains Mono", monospace;
+  color: var(--faint);
+  transition: color .25s ease;
+}
+.scroll-rail-marks a:hover { border-color: var(--accent); transform: scale(1.1); }
+.scroll-rail-marks a.is-active { border-color: var(--accent); background: var(--accent); transform: scale(1.2); }
+.scroll-rail-marks a.is-active span { color: var(--surface); }
+@media (max-width: 1180px) { .scroll-rail { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .scroll-rail-fill, .scroll-rail-thumb { transition: none; }
+}
+
 /* Layout helpers */
 .section { width: min(1080px, calc(100% - 40px)); margin: 0 auto; padding: 108px 0; }
 .section + .section { border-top: 1px solid var(--line); }
