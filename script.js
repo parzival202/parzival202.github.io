@@ -2,6 +2,40 @@ const header = document.querySelector("[data-header]");
 const menuButton = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
 
+const storedTheme = localStorage.getItem("portfolio-theme");
+const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+const initialTheme = storedTheme || (systemDark ? "dark" : "light");
+document.documentElement.dataset.theme = initialTheme;
+
+if (header && !header.querySelector("[data-theme-toggle]")) {
+  const themeToggle = document.createElement("button");
+  themeToggle.className = "theme-toggle";
+  themeToggle.type = "button";
+  themeToggle.dataset.themeToggle = "";
+  themeToggle.innerHTML = '<span class="theme-toggle-icon" aria-hidden="true"></span><span data-theme-label></span>';
+  header.insertBefore(themeToggle, menuButton || nav?.nextSibling || null);
+}
+
+const themeToggle = document.querySelector("[data-theme-toggle]");
+const themeLabel = document.querySelector("[data-theme-label]");
+
+function syncThemeToggle() {
+  const theme = document.documentElement.dataset.theme || "light";
+  const nextTheme = theme === "dark" ? "clair" : "sombre";
+  themeToggle?.setAttribute("aria-label", `Passer en mode ${nextTheme}`);
+  themeToggle?.setAttribute("aria-pressed", String(theme === "dark"));
+  if (themeLabel) themeLabel.textContent = theme === "dark" ? "Clair" : "Sombre";
+}
+syncThemeToggle();
+
+themeToggle?.addEventListener("click", () => {
+  const current = document.documentElement.dataset.theme || "light";
+  const next = current === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem("portfolio-theme", next);
+  syncThemeToggle();
+});
+
 function syncHeader() {
   header?.classList.toggle("is-scrolled", window.scrollY > 12);
 }
