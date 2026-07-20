@@ -12,19 +12,27 @@ if (header && !header.querySelector("[data-theme-toggle]")) {
   themeToggle.className = "theme-toggle";
   themeToggle.type = "button";
   themeToggle.dataset.themeToggle = "";
-  themeToggle.innerHTML = '<span class="theme-toggle-icon" aria-hidden="true"></span><span data-theme-label></span>';
+  themeToggle.innerHTML = `
+    <span class="theme-toggle-track" aria-hidden="true">
+      <span class="theme-toggle-icon theme-toggle-sun">
+        <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path></svg>
+      </span>
+      <span class="theme-toggle-icon theme-toggle-moon">
+        <svg viewBox="0 0 24 24" focusable="false"><path d="M20 14.5A7.5 7.5 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"></path></svg>
+      </span>
+      <span class="theme-toggle-thumb"></span>
+    </span>
+  `;
   header.insertBefore(themeToggle, menuButton || nav?.nextSibling || null);
 }
 
 const themeToggle = document.querySelector("[data-theme-toggle]");
-const themeLabel = document.querySelector("[data-theme-label]");
 
 function syncThemeToggle() {
   const theme = document.documentElement.dataset.theme || "light";
   const nextTheme = theme === "dark" ? "clair" : "sombre";
   themeToggle?.setAttribute("aria-label", `Passer en mode ${nextTheme}`);
   themeToggle?.setAttribute("aria-pressed", String(theme === "dark"));
-  if (themeLabel) themeLabel.textContent = theme === "dark" ? "Clair" : "Sombre";
 }
 syncThemeToggle();
 
